@@ -1,0 +1,15 @@
+  .container {
+    display: flex;
+    text-align: center;
+    height: 100%
+
+  }
+  .right, .left {
+    flex:1;
+  }
+
+  .right {
+    background-color: #20855D;
+    border-left-color: #0A7847;
+    border-left-width: 1px;
+  }
