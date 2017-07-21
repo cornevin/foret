@@ -1,6 +1,6 @@
 import React from 'react'
 import Countdown from './countdown'
-import Task from './tasks'
+import TasksComponent from './tasks'
 import { } from './style.css'
 import tree from './tree.png'
 
@@ -13,7 +13,7 @@ const Room = () => (
       </div>
     </div>
     <div className="right">
-      <Task />
+      <TasksComponent />
     </div>
   </div>
 )
