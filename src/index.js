@@ -5,6 +5,9 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { BrowserRouter } from 'react-router-dom'
+import * as firebase from './core/firebase'
+
+firebase.init();
 
 injectTapEventPlugin();
 

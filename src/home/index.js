@@ -3,12 +3,14 @@ import tree from './tree.png'
 import './style.css'
 import { withRouter } from 'react-router-dom'
 import RaisedButton from 'material-ui/RaisedButton'
+import * as firebase from '../core/firebase'
 
 class Home extends Component {
 
   constructor(props) {
     super(props)
     this.joinRoom = this.joinRoom.bind(this)
+    const rootRef = firebase.database.ref().child('foret')
   }
 
   joinRoom() {
