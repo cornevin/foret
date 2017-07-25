@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import * as firebase from '../../core/firebase'
-import { List, ListItem } from 'material-ui/List'
+import { Image, List } from 'semantic-ui-react'
 import Subheader from 'material-ui/Subheader'
-import Avatar from 'material-ui/Avatar'
 
 export default class userPanel extends Component {
 
@@ -25,16 +24,18 @@ export default class userPanel extends Component {
   render() {
     const displayUser = Object.keys(this.state.userList).map(function (key) {
       return (
-        <ListItem
-          key={key}
-          primaryText={this.state.userList[key]}
-          leftAvatar={<Avatar backgroundColor="#20855D"/>}
-        />)
+        <List.Item key={key}>
+          <Image avatar src='/assets/images/tree.png' />
+          <List.Content>
+            <List.Header>{this.state.userList[key]}</List.Header>
+          </List.Content>
+        </List.Item>
+      )
     }, this);
 
     return (
       <div>
-        <List>
+        <List selection verticalAlign='middle'>
           <Subheader>User list</Subheader>
           {displayUser}
         </List>

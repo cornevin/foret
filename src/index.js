@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { BrowserRouter } from 'react-router-dom'
 import * as firebase from './core/firebase'
+import "semantic-ui-css/semantic.min.css"
 
 firebase.init();
 

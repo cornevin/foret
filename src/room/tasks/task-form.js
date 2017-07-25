@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
+import { Button, Input } from 'semantic-ui-react'
 
 class TaskForm extends Component {
 
@@ -26,19 +25,18 @@ class TaskForm extends Component {
   render() {
     return (
       <form onSubmit={this.onAddTask} >
-        <TextField
+        <Input
           value={this.state.value}
           onChange={this.handleChange}
-          hintText="Enter your goal here ..."
-          floatingLabelStyle={{ color: "#FFFFFF" }}
+          placeholder="Enter your goal here ..."
            />
 
-        <RaisedButton label="Add goal"
+        <Button
           labelColor="#FFFFFF"
           backgroundColor="#48a16f"
-          style={{ margin: 12 }}
-          type="submit"
-        />
+          type="submit">
+          Add Goal
+          </Button>
       </form>
     )
   }

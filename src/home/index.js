@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import treeImage from '../assets/images/tree.png'
 import './style.css'
 import { withRouter } from 'react-router-dom'
-import RaisedButton from 'material-ui/RaisedButton'
 import * as firebase from '../core/firebase'
-import TextField from 'material-ui/TextField'
+import { Button, Input } from 'semantic-ui-react'
 
 class Home extends Component {
 
@@ -40,16 +39,11 @@ class Home extends Component {
         <div>
           <h1> Welcome to foret </h1>
         </div>
-        <TextField
-          value={this.state.userName}
+        <Input
           onChange={this.handleChange}
-          hintText="Enter your username ..."
-          floatingLabelStyle={{ color: "#FFFFFF" }}
-        />
-        <div>
-          <RaisedButton type="submit" label="Join the Room"
-            labelColor="#FFFFFF" backgroundColor="#20855D" style={{ margin: 12 }} />
-        </div>
+          value={this.state.userName}
+          placeholder='Enter your username ...' />
+        <Button type="submit" primary>Join the Room</Button>
       </form>
     )
   }
