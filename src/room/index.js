@@ -1,6 +1,7 @@
 import React from 'react'
 import Countdown from './countdown'
 import TasksComponent from './tasks'
+import UserPanel from './user-panel'
 import { } from './style.css'
 import tree from './tree.png'
 
@@ -14,6 +15,9 @@ const Room = () => (
     </div>
     <div className="right">
       <TasksComponent />
+    </div>
+    <div>
+      <UserPanel/>
     </div>
   </div>
 )
