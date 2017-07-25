@@ -7,7 +7,7 @@ class TaskForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: '',
+      value: ''
     }
   }
 
@@ -16,10 +16,16 @@ class TaskForm extends Component {
       value: event.target.value
     })
   }
-
+  onAddTask = (e) => {
+    e.preventDefault();
+    this.props.addTask(this.state.value);
+    this.setState({
+      value: ''
+    })
+  }
   render() {
     return (
-      <div>
+      <form onSubmit={this.onAddTask} >
         <TextField
           value={this.state.value}
           onChange={this.handleChange}
@@ -27,19 +33,13 @@ class TaskForm extends Component {
           floatingLabelStyle={{ color: "#FFFFFF" }}
            />
 
-
         <RaisedButton label="Add goal"
           labelColor="#FFFFFF"
           backgroundColor="#48a16f"
           style={{ margin: 12 }}
-          onClick={() => {
-            this.props.addTask(this.state.value);
-            this.setState({
-              value: ''
-            })
-          }} />
-
-      </div>
+          type="submit"
+        />
+      </form>
     )
   }
 }
