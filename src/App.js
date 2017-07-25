@@ -9,14 +9,11 @@ import {
 } from 'react-router-dom'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <MuiThemeProvider>
         <div className="App">
+
           <Router>
             <div>
               <Route exact path='/' component={Home} />
