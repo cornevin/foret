@@ -12,9 +12,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
-
         <div className="App">
-
           <Router>
             <div>
               <Route exact path='/' component={Home} />

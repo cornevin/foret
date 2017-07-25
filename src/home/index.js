@@ -48,7 +48,7 @@ class Home extends Component {
         />
         <div>
           <RaisedButton type="submit" label="Join the Room"
-                        labelColor="#FFFFFF" backgroundColor="#20855D" style={{ margin: 12 }} />
+            labelColor="#FFFFFF" backgroundColor="#20855D" style={{ margin: 12 }} />
         </div>
       </form>
     )
