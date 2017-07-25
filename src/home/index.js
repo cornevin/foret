@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import tree from './tree.png'
+import treeImage from '../assets/images/tree.png'
 import './style.css'
 import { withRouter } from 'react-router-dom'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -36,7 +36,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <img src={tree} alt="app logo" style={{ height: 200 }} />
+        <img src={treeImage} alt="app logo" style={{ height: 200 }} />
         <div>
           <h1> Welcome to foret </h1>
         </div>

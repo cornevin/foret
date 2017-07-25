@@ -10,7 +10,7 @@ class TasksComponent extends Component {
     super(props);
     this.state = {
       expanded: false,
-      tasks: [],
+      tasks: []
     };
   }
 
