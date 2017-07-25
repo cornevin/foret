@@ -12,7 +12,7 @@ class Home extends Component {
     super(props)
     this.joinRoom = this.joinRoom.bind(this)
     this.state = {
-      userName: '',
+      userName: ''
     }
   }
 
@@ -35,7 +35,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="home">
+      <form onSubmit={this.joinRoom} className="home">
         <img src={treeImage} alt="app logo" style={{ height: 200 }} />
         <div>
           <h1> Welcome to foret </h1>
@@ -46,10 +46,11 @@ class Home extends Component {
           hintText="Enter your username ..."
           floatingLabelStyle={{ color: "#FFFFFF" }}
         />
-        <div onClick={this.joinRoom}>
-          <RaisedButton label="Join the Room" labelColor="#FFFFFF" backgroundColor="#20855D" style={{ margin: 12 }} />
+        <div>
+          <RaisedButton type="submit" label="Join the Room"
+                        labelColor="#FFFFFF" backgroundColor="#20855D" style={{ margin: 12 }} />
         </div>
-      </div>
+      </form>
     )
   }
 }
