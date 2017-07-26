@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import * as firebase from '../../core/firebase'
-import { Image, List } from 'semantic-ui-react'
+import { Image, List, Divider } from 'semantic-ui-react'
 import Subheader from 'material-ui/Subheader'
 
 export default class userPanel extends Component {
@@ -27,8 +27,10 @@ export default class userPanel extends Component {
         <List.Item key={key}>
           <Image avatar src='/assets/images/tree.png' />
           <List.Content>
-            <List.Header>{this.state.userList[key]}</List.Header>
+            <List.Header>{this.state.userList[key].userName}</List.Header>
+            {this.state.userList[key].status}
           </List.Content>
+          <Divider />
         </List.Item>
       )
     }, this);

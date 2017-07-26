@@ -17,7 +17,7 @@ class Home extends Component {
 
   joinRoom() {
     const rootRef = firebase.database.ref().child('foret')
-    rootRef.child('users').push(this.state.userName)
+    rootRef.child('users').push({userName: this.state.userName, status: 'available'})
     if (this.state.userName !== '') {
       this.setState({
         userName: ''
