@@ -3,7 +3,7 @@ import treeImage from '../assets/images/tree.png'
 import './style.css'
 import { withRouter } from 'react-router-dom'
 import * as firebase from '../core/firebase'
-import { Button, Input } from 'semantic-ui-react'
+import { Form, Grid, Label} from 'semantic-ui-react'
 
 class Home extends Component {
 
@@ -11,18 +11,24 @@ class Home extends Component {
     super(props)
     this.joinRoom = this.joinRoom.bind(this)
     this.state = {
-      userName: ''
+      userName: '',
+      showErrorMessage: false
     }
   }
 
   joinRoom() {
+    if (this.state.userName === '') {
+      this.setState({
+        showErrorMessage: true
+      })
+    }
+    else {
     const rootRef = firebase.database.ref().child('foret')
     rootRef.child('users').push({userName: this.state.userName, status: 'available'})
-    if (this.state.userName !== '') {
       this.setState({
         userName: ''
       })
-      this.props.history.push("/room");
+      this.props.history.push("/room")
     }
   }
 
@@ -34,17 +40,23 @@ class Home extends Component {
 
   render() {
     return (
-      <form onSubmit={this.joinRoom} className="home">
-        <img src={treeImage} alt="app logo" style={{ height: 200 }} />
-        <div>
+      <Grid centered columns={2} className="home-grid">
+        <Form onSubmit={this.joinRoom}>
+          <img src={treeImage} alt="app logo" style={{ height: 200 }}/>
           <h1> Welcome to foret </h1>
-        </div>
-        <Input
-          onChange={this.handleChange}
-          value={this.state.userName}
-          placeholder='Enter your username ...' />
-        <Button type="submit" primary>Join the Room</Button>
-      </form>
+          <Form.Group>
+            <Form.Field>
+              <Form.Input
+                onChange={this.handleChange}
+                value={this.state.userName}
+                placeholder='Enter your username ...'
+                action={{color: 'teal', labelPosition: 'right', content: 'Join the Room', type: 'submit', icon:'home'}}/>
+              {this.state.showErrorMessage ?
+                <Label basic color='red' pointing>Please enter a username</Label> : null}
+            </Form.Field>
+          </Form.Group>
+        </Form>
+      </Grid>
     )
   }
 }
