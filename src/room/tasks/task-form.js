@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Input } from 'semantic-ui-react'
+import { Button, Form, Label, Grid } from 'semantic-ui-react'
 
 class TaskForm extends Component {
 
@@ -22,22 +22,26 @@ class TaskForm extends Component {
       value: ''
     })
   }
+
   render() {
     return (
-      <form onSubmit={this.onAddTask} >
-        <Input
-          value={this.state.value}
-          onChange={this.handleChange}
-          placeholder="Enter your goal here ..."
-           />
-
-        <Button
-          labelColor="#FFFFFF"
-          backgroundColor="#48a16f"
-          type="submit">
-          Add Goal
-          </Button>
-      </form>
+      <Grid centered columns={4}>
+        <Form onSubmit={this.onAddTask}>
+          <Form.Group>
+            <Form.Field>
+              <Form.Input
+                value={this.state.value}
+                onChange={this.handleChange}
+                placeholder="Enter your goal here ..." action>
+                <input/>
+                <Button type='submit' color="green">Add Task</Button>
+              </Form.Input>
+              {this.state.showErrorMessage ?
+                <Label basic color='red' pointing>Please enter a username</Label> : null}
+            </Form.Field>
+          </Form.Group>
+        </Form>
+      </Grid>
     )
   }
 }

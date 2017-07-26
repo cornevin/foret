@@ -9,7 +9,8 @@
   }
 
   .right {
-    background-color: #20855D;
+    padding-top: 2rem;
+    background-color: rgba(32, 133, 93, 0.77);
     border-left-color: #0A7847;
     border-left-width: 1px;
   }
