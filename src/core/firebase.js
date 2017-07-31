@@ -1,5 +1,9 @@
 import * as firebase from 'firebase'
+
 export let database
+
+let userKey
+
 export const init = () => {
   let config = {
     apiKey: "AIzaSyBU1D5w3YQkGebNARG05jGPfWOnCL1igp8",
@@ -13,3 +17,14 @@ export const init = () => {
   database = firebase.database()
 }
 
+export const addUserToRoom = (userName) => {
+  const rootRef = database.ref('foret/users').push()
+  userKey = rootRef.key
+  database.ref('foret/users/'+ userKey).set({ userName: userName, status: 'available' })
+}
+
+export const setUserStatus = (userStatus) => {
+  database.ref('foret/users/' + userKey).update({
+    status:userStatus
+  })
+}

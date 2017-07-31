@@ -3,7 +3,7 @@ import treeImage from '../assets/images/tree.png'
 import './style.css'
 import { withRouter } from 'react-router-dom'
 import * as firebase from '../core/firebase'
-import { Form, Grid, Label} from 'semantic-ui-react'
+import { Form, Grid, Label } from 'semantic-ui-react'
 
 class Home extends Component {
 
@@ -23,11 +23,7 @@ class Home extends Component {
       })
     }
     else {
-    const rootRef = firebase.database.ref().child('foret')
-    rootRef.child('users').push({userName: this.state.userName, status: 'available'})
-      this.setState({
-        userName: ''
-      })
+      firebase.addUserToRoom(this.state.userName)
       this.props.history.push("/room")
     }
   }
@@ -42,7 +38,7 @@ class Home extends Component {
     return (
       <Grid centered columns={2} className="home-grid">
         <Form onSubmit={this.joinRoom}>
-          <img src={treeImage} alt="app logo" style={{ height: 200 }}/>
+          <img src={treeImage} alt="app logo" style={{ height: 200 }} />
           <h1> Welcome to foret </h1>
           <Form.Group>
             <Form.Field>
@@ -50,7 +46,7 @@ class Home extends Component {
                 onChange={this.handleChange}
                 value={this.state.userName}
                 placeholder='Enter your username ...'
-                action={{color: 'teal', labelPosition: 'right', content: 'Join the Room', type: 'submit', icon:'home'}}/>
+                action={{ color: 'teal', labelPosition: 'right', content: 'Join the Room', type: 'submit', icon: 'home' }} />
               {this.state.showErrorMessage ?
                 <Label basic color='red' pointing>Please enter a username</Label> : null}
             </Form.Field>

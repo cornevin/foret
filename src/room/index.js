@@ -5,6 +5,7 @@ import UserPanel from './user-panel'
 import { } from './style.css'
 import treeImage from '../assets/images/tree.png'
 
+
 const Room = () => (
   <div className="container">
     <div className="left">
