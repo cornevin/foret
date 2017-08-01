@@ -25,7 +25,7 @@ export default class userPanel extends Component {
     const displayUser = Object.keys(this.state.userList).map(function (key) {
       return (
         <List.Item key={key}>
-          <Image avatar src='/assets/images/tree.png' />
+          <Image avatar src={require('../../assets/images/user/'+ Math.floor((Math.random() * 24) + 1) +'.jpg')} />
           <List.Content>
             <List.Header>{this.state.userList[key].userName}</List.Header>
             {this.state.userList[key].status}
