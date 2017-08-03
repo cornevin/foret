@@ -34,7 +34,7 @@ class TaskForm extends Component {
                 onChange={this.handleChange}
                 placeholder="Enter your goal here ..." action>
                 <input/>
-                <Button type='submit' color="green">Add Task</Button>
+                <Button type='submit' color="teal">Add Task</Button>
               </Form.Input>
               {this.state.showErrorMessage ?
                 <Label basic color='red' pointing>Please enter a username</Label> : null}

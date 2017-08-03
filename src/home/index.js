@@ -5,51 +5,6 @@ import { withRouter } from 'react-router-dom'
 import * as firebase from '../core/firebase'
 import { Form, Grid, Label } from 'semantic-ui-react'
 
-// GraphQL
-import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
-
-const GetRepositoryInfoQuery = gql`
-  query GetRepositoryIssues($name: String!, $login: String!) {
-    repositoryOwner(login: $login) {
-      repository(name: $name) {
-        stargazers {
-          totalCount
-        }
-        watchers {
-          totalCount
-        }
-      }
-    }
-  }
-`;
-
-const withInfo = graphql(GetRepositoryInfoQuery, {
-  options: ({ login, name }) => {
-    return {
-      variables: {
-        login: 'facebook',
-        name: 'react'
-      }
-    }
-  },
-  props: ({ data }) => {
-    // loading state
-    if (data.loading) {
-      return { loading: true };
-    }
-
-    // error state
-    if (data.error) {
-      console.error(data.error);
-    }
-
-    // OK state
-    return { data };
-  },
-});
-
-
 class Home extends Component {
 
   constructor(props) {
@@ -58,26 +13,8 @@ class Home extends Component {
     this.state = {
       userName: '',
       showErrorMessage: false,
-      ogin: props.login,
-      name: props.name,
-      stargazers: 0,
-      watchers: 0,
     }
   }
-
-  componentWillReceiveProps(newProps) {
-    // DRY
-    const repo = newProps.data.repositoryOwner.repository;
-
-    // states
-    this.setState({
-      login: this.props.login,
-      name: this.props.name,
-      stargazers: repo.stargazers.totalCount,
-      watchers: repo.watchers.totalCount
-    });
-  }
-
 
   joinRoom() {
     if (this.state.userName === '') {
@@ -100,11 +37,6 @@ class Home extends Component {
   render() {
     return (
       <Grid centered columns={2} className="home-grid">
-        <h2>{this.state.login}/{this.state.name}</h2>
-      <ul>
-        <li>stargazers: {this.state.stargazers.toLocaleString()}</li>
-        <li>watchers: {this.state.watchers.toLocaleString()}</li>
-      </ul>
         <Form onSubmit={this.joinRoom}>
           <img src={treeImage} alt="app logo" style={{ height: 200 }} />
           <h1> Welcome to foret </h1>
@@ -125,4 +57,4 @@ class Home extends Component {
   }
 }
 
-export default withInfo(withRouter(Home))
+export default withRouter(Home)

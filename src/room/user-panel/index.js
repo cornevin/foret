@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import * as firebase from '../../core/firebase'
-import { Image, List, Divider } from 'semantic-ui-react'
-import Subheader from 'material-ui/Subheader'
+import { Image, List } from 'semantic-ui-react'
 
 export default class userPanel extends Component {
 
@@ -28,20 +27,16 @@ export default class userPanel extends Component {
           <Image avatar src={require('../../assets/images/user/'+ Math.floor((Math.random() * 24) + 1) +'.jpg')} />
           <List.Content>
             <List.Header>{this.state.userList[key].userName}</List.Header>
-            {this.state.userList[key].status}
+            <List.Description>{this.state.userList[key].status}</List.Description>
           </List.Content>
-          <Divider />
         </List.Item>
       )
     }, this);
 
     return (
-      <div>
-        <List selection verticalAlign='middle'>
-          <Subheader>User list</Subheader>
-          {displayUser}
-        </List>
-      </div>
+      <List selection divided verticalAlign='middle'>
+        {displayUser}
+      </List>
     )
   }
 }
