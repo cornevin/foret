@@ -8,7 +8,7 @@ import { graphql } from 'react-apollo';
 
 const addHooray = gql`
   mutation AddReactionToIssue {
-    addReaction(input:{subjectId:"MDU6SXNzdWUyNDcwMzk1Mzg=",content:HOORAY}) {
+    addReaction(input:{subjectId:"MDU6SXNzdWUyNDcwMzk1Mzg=",content:CONFUSED}) {
       reaction {
         content
       }
@@ -22,9 +22,19 @@ const addHooray = gql`
 class Task extends Component {
   constructor(props) {
     super(props)
-    this.state.task = props.task
+    this.state = {
+      task: props.task
+    }
   }
-  // follow this tuto http://dev.apollodata.com/react/mutations.html
+
+  onClick() {
+    this.props.mutate()
+      .then(({ data }) => {
+        console.log(data)
+      }).catch((error) => {
+        console.log(error)
+      })
+  }
 
   render() {
     return (
@@ -35,7 +45,7 @@ class Task extends Component {
           showExpandableButton={true}
         />
         <CardActions>
-          <FlatButton label="Add HOORAY to issue" />
+          <FlatButton label="Add HOORAY to issue"  onClick={this.onClick.bind(this)} />
           <FlatButton label="Action2" />
         </CardActions>
       </Card>
@@ -44,4 +54,4 @@ class Task extends Component {
 }
 
 
-export default Task
+export default graphql(addHooray)(Task)

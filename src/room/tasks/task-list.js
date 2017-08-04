@@ -103,6 +103,7 @@ class TaskList extends Component {
         <li>Issue author: {this.state.stargazers.toLocaleString()}</li>
         <li>issue text: {this.state.watchers.toLocaleString()}</li>
       </ul>
+      <Task task={{text: "test"}} key="1"/>
       <ul>{taskNode}</ul>
     </div>
     )
